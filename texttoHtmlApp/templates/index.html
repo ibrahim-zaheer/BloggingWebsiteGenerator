@@ -15,25 +15,28 @@
         <h2 class="text-center pb-4">Blogging Website Code Generator</h2>
         <h3 class="text-center pb-4">Text to HTML and HTML to Text Convertor</h3>
         <div class="row">
-            <div class="col-lg-6">
-                <div class="texteditor p-3 border rounded">
-                    <h2 class="mb-3">Text Editor</h2>
-                    {{ form.media }}
-                    {{ form.as_p }}
-                    <div class="d-grid gap-2">
-                        <input type="button" class="btn btn-primary" value="Convert to HTML" onclick="TextConvert()">
+            <form method="post" action="{% url 'generate_html' %}">
+                {% csrf_token %}
+                <div class="col-lg-6">
+                    <div class="texteditor p-3 border rounded">
+                        <h2 class="mb-3">Text Editor</h2>
+                        {{ form.media }}
+                        {{ form.as_p }}
+                        <div class="d-grid gap-2">
+                            <input type="button" class="btn btn-primary" value="Convert to HTML" onclick="TextConvert()">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="htmleditor p-3 border rounded">
-                    <h2 class="mb-3">HTML Output</h2>
-                    <textarea class="form-control" rows="16" id="htmldata"></textarea>
-                    <div class="d-grid gap-2 mt-3">
-                        <input type="button" class="btn btn-primary" value="Convert to Text" onclick="HTMLConvert()">
+                <div class="col-lg-6">
+                    <div class="htmleditor p-3 border rounded">
+                        <h2 class="mb-3">HTML Output</h2>
+                        <textarea class="form-control" rows="16" id="htmldata"></textarea>
+                        <div class="d-grid gap-2 mt-3">
+                            <input type="submit" class="btn btn-primary" value="Convert to Text">
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
     <script>
@@ -60,6 +63,6 @@
             }
         }
     </script>
-    </body>
+</body>
 
 </html>
